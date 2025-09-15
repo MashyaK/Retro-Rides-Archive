@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retro Rides Archive</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* ---------- GLOBAL STYLES ---------- */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('https://via.placeholder.com/1920x1080') no-repeat center center fixed;
+      background-size: cover;
+      color: #f5f5f5;
+      backdrop-filter: blur(3px);
+    }
+
+    h1,
+    h2,
+    h3 {
+      letter-spacing: 1px;
+    }
+
+    a {
+      transition: all 0.3s ease;
+    }
+
+    /* ---------- HEADER ---------- */
+    header {
+      background: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      padding: 20px 40px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.8em;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    nav {
+      margin-top: 12px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 400;
+      font-size: 1.05em;
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: #f4a261;
+      transition: width 0.3s;
+    }
+
+    nav a:hover::after,
+    nav a.active::after {
+      width: 100%;
+    }
+
+    nav a.active {
+      color: #f4a261;
+      font-weight: 600;
+    }
+
+    /* ---------- HERO SECTION ---------- */
+    .hero {
+      height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.55);
+      margin: 0;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      z-index: 2;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      color: #f4a261;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 30px;
+      color: #ddd;
+    }
+
+    .hero a.button {
+      background: #f4a261;
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+
+    .hero a.button:hover {
+      background: #e76f51;
+    }
+
+    /* ---------- SECTION ---------- */
+    .section {
+      padding: 60px 40px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.08);
+      margin: 60px auto;
+      border-radius: 20px;
+      max-width: 1200px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(12px);
+      color: #fff;
+    }
+
+    .section h2 {
+      font-size: 2.5em;
+      margin-bottom: 15px;
+      color: #f4a261;
+    }
+
+    .section p {
+      font-size: 1.2em;
+      margin-bottom: 40px;
+      color: #ddd;
+    }
+
+    /* ---------- GRID ---------- */
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 25px;
+    }
+
+    .grid-item {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .grid-item img {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 15px;
+      transition: transform 0.5s ease;
+    }
+
+    .grid-item h3 {
+      font-size: 1.4em;
+      margin: 10px 0;
+      color: #f4a261;
+    }
+
+    .grid-item ul {
+      text-align: left;
+      padding-left: 18px;
+      color: #ddd;
+      font-size: 0.95em;
+      line-height: 1.6;
+    }
+
+    .grid-item:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    .grid-item:hover img {
+      transform: scale(1.1);
+    }
+
+    /* ---------- ABOUT SECTION ---------- */
+    #about {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 60vh;
+      padding: 20px;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.55);
+      border-radius: 20px;
+      max-width: 1000px;
+      margin: 60px auto;
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      background: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      text-align: center;
+      padding: 25px;
+      margin-top: 60px;
+      font-size: 0.95em;
+      backdrop-filter: blur(8px);
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Retro Rides Archive</h1>
+    <nav>
+      <a href="#hero" class="active">Home</a>
+      <a href="#about">About</a>
+      <a href="#cars">Cars</a>
+
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <h2>Welcome to Retro Rides</h2>
+      <p>Step back in time and explore the legendary cars that defined an era. From timeless classics to iconic designs, this is your gateway to automotive history.</p>
+      <a class="button" href="#cars">Explore the Cars</a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section" id="about">
+    <h2>Our Story</h2>
+    <p>Retro Rides Archive is dedicated to preserving the legacy of classic automobiles. We celebrate iconic designs, groundbreaking engineering, and the timeless beauty of cars that shaped history.</p>
+  </section>
+
+  <section id="cars" class="section">
+    <h2>Classic Cars</h2>
+    <p>A selection of the most iconic classic cars in history.</p>
+    <div class="grid-container">
+        <div class="grid-item">
+          <img src="https://silodrome.com/wp-content/uploads/2019/11/1953-Chevrolet-Corvette.jpg" alt="Chevrolet Corvette 1953">
+          <h3>Chevrolet Corvette (1953)</h3>
+          <ul>
+            <li>Year Launched: 1953</li>
+            <li>Price: $3490</li>
+            <li>America's first sports car, the Corvette became iconic for its fiberglass body and impressive engine performance.</li>
+          </ul>
+        </div>
+      
+        <div class="grid-item">
+          <img src="https://media.goodingco.com/image/upload/c_fill,g_auto,q_88,w_1636/v1/Prod/FL22%20-%20Amelia%20Island%202022/470_1954%20Mercedes-Benz%20300%20SL%20Gullwing/1954_Mercedes-Benz_300_SL_Gullwing_20_sdmuh7" alt="Mercedes-Benz 300SL Gullwing 1954">
+          <h3>Mercedes-Benz 300SL Gullwing (1954)</h3>
+          <ul>
+            <li>Year Launched: 1954</li>
+            <li>Price: $6,820</li>
+            <li>Famous for its distinctive gullwing doors, the 300SL combined elegance with groundbreaking engineering.</li>
+          </ul>
+        </div>
+      
+        <div class="grid-item">
+          <img src="https://hagerty-vid-images.imgix.net/Vehicle%20Attributes/1964-1968%20Porsche%20911/1965_Porsche_911_1.jpg" alt="Porsche 911 1964">
+          <h3>Porsche 911 (1964)</h3>
+          <ul>
+            <li>Year Launched: 1964</li>
+            <li>Price: $6,500</li>
+            <li>The original 911 set the foundation for one of the most iconic sports cars in history, blending style, speed, and precision.</li>
+          </ul>
+        </div>
+      
+        <div class="grid-item">
+          <img src="https://www.motortrend.com/uploads/f/70428996.jpg" alt="Ford Mustang 1965">
+          <h3>Ford Mustang (1965)</h3>
+          <ul>
+            <li>Year Launched: 1965</li>
+            <li>Price: $2368</li>
+            <li>The Ford Mustang revolutionized the sports car market with its sleek design and powerful performance.</li>
+          </ul>
+        </div>
+      
+        <div class="grid-item">
+          <img src="https://cdn.dealeraccelerate.com/artandspeed/1/244/9080/790x1024/1967-ford-mustang-eleanor-gt" alt="Ford Mustang Eleanor 1967">
+          <h3>Ford Mustang Eleanor (1967)</h3>
+          <ul>
+            <li>Year Launched: 1967</li>
+            <li>Price: $7500</li>
+            <li>Made famous by the movie "Gone in 60 Seconds," Eleanor is a customized Shelby Mustang GT500.</li>
+          </ul>
+        </div>
+      
+        <div class="grid-item">
+          <img src="https://cdn.dealeraccelerate.com/noreserve/1/578/11689/1920x1440/1967-chevrolet-camaro-rs-ss-zz427-pro-touring-restomod" alt="Chevrolet Camaro 1967">
+          <h3>Chevrolet Camaro (1967)</h3>
+          <ul>
+            <li>Year Launched: 1967</li>
+            <li>Price: $2495</li>
+            <li>Designed to compete with the Ford Mustang, the Camaro is known for its performance and style.</li>
+          </ul>
+        </div>
+      
+        <div class="grid-item">
+          <img src="https://cdn.dealeraccelerate.com/stlouis/1/1595/50686/1920x1440/1969-dodge-charger" alt="Dodge Charger 1969">
+          <h3>Dodge Charger (1969)</h3>
+          <ul>
+            <li>Year Launched: 1969</li>
+            <li>Price: $3600</li>
+            <li>The 1969 Charger, with its signature split grille, became famous for its role in the TV series "The Dukes of Hazzard."</li>
+          </ul>
+        </div>
+      
+        <div class="grid-item">
+          <img src="https://media.goodingco.com/image/upload/c_fill,g_auto,q_88,w_1590/v1/Prod/PB21%20-%20Pebble%20Beach%20Auctions%202021/605%20%E2%80%94%C2%A01969%20Ferrari%20365%20GTB%204%20Daytona/1969_Ferrari_365_GTB_4_Daytona_20_JPEG_Press_gq7szg" alt="Ferrari Daytona 1969">
+          <h3>Ferrari Daytona (1969)</h3>
+          <ul>
+            <li>Year Launched: 1969</li>
+            <li>Price: $19,500</li>
+            <li>Officially known as the 365 GTB/4, the Daytona was Ferrari's answer to Lamborghini's Miura, blending luxury and performance.</li>
+          </ul>
+        </div>
+      
+        <div class="grid-item">
+          <img src="https://i.pinimg.com/736x/21/67/e2/2167e28199b782aeaeefed35d76e257c.jpg" alt="Dodge Challenger 1970">
+          <h3>Dodge Challenger (1970)</h3>
+          <ul>
+            <li>Year Launched: 1970</li>
+            <li>Price: $3100</li>
+            <li>The Challenger was Dodge's entry into the pony car market, offering a variety of powerful engines and aggressive styling.</li>
+          </ul>
+        </div>
+      
+        <div class="grid-item">
+          <img src="https://bringatrailer.com/wp-content/uploads/2021/08/1970_plymouth_cuda_1632156250e61fce881970_plymouth_cuda_16298769515d565ef66e7dffe41a52b5-b85b-4d5c-ac9a-a52424d48bb5-gsImcD.jpg" alt="Plymouth Barracuda 1970">
+          <h3>Plymouth Barracuda (1970)</h3>
+          <ul>
+            <li>Year Launched: 1970</li>
+            <li>Price: $2846</li>
+            <li>A powerful muscle car, the Barracuda gained fame for its performance and unique design.</li>
+          </ul>
+        </div>
+      
+        <div class="grid-item">
+          <img src="https://www.sportscarmarket.com/wp-content/uploads/2015/06/741d8be09573486066989a222571f255.jpg" alt="Datsun 240Z 1970">
+          <h3>Datsun 240Z (1970)</h3>
+          <ul>
+            <li>Year Launched: 1970</li>
+            <li>Price: $3526</li>
+            <li>A Japanese sports car that combined style, performance, and affordability.</li>
+          </ul>
+        </div>
+      
+        <div class="grid-item">
+          <img src="https://cdn.dealeraccelerate.com/ab/1/1392/60560/1920x1440/1972-ford-mustang-mach-i" alt="Ford Mustang 1972">
+          <h3>Ford Mustang (1972)</h3>
+          <ul>
+            <li>Year Launched: 1972</li>
+            <li>Price: $2760</li>
+            <li>The 1972 Mustang retained its bold design but was toned down in power due to stricter emission regulations.</li>
+          </ul>
+        </div>
+      
+      </div>
+
+  <footer>
+    <p>&copy; 2025 Retro Rides Archive | All Rights Reserved</p>
+  </footer>
+
+</body>
+</html>
